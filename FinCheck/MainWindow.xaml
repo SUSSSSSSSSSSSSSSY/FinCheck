@@ -1,0 +1,113 @@
+﻿<Window x:Class="FinCheck.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FinCheck" Height="800" Width="800"
+        Background="#000000" Foreground="White">
+
+    <Window.Resources>
+        <Style TargetType="TabControl">
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <Style TargetType="TabItem">
+            <Setter Property="Background" Value="#035405"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#00ff09"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#00ff09"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="40"/>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Background" Value="#035405"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#00ff09"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#00ff09"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style TargetType="ListBox">
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#00ff09"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <TabControl>
+            <TabItem Header="Кошельки">
+                <StackPanel Margin="10">
+                    <Button Content="Добавить кошелек" Click="AddWallet_Click"/>
+                    <Button Content="Удалить кошелек" Click="DeleteWallet_Click"/>
+                    <ListBox x:Name="WalletsListBox" Width="300" Height="200" Margin="10"/>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="Транзакции">
+                <StackPanel Margin="10">
+                    <Button Content="Добавить транзакцию" Click="AddTransaction_Click"/>
+                    <Button Content="Редактировать транзакцию" Click="EditTransaction_Click"/>
+                    <Button Content="Удалить транзакцию" Click="DeleteTransaction_Click"/>
+                    <ListBox x:Name="WalletsListBoxTransaction" Width="300" Height="200" Margin="10"/>
+                    <Button Content="Найти Транзакции" Click="FindTransactions_Click"/>
+                    <ListBox x:Name="TransactionsListBox" Width="300" Height="200" Margin="10"/>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="Статистика">
+                <StackPanel Margin="10">
+                    <Button Content="Показать статистику" Click="ShowStats_Click"/>
+                    <Button Content="Экспортировать отчет" Click="ExportReport_Click"/>
+                    <ListBox x:Name="WalletsStatsListBox" Width="300" Height="200" Margin="10"/>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="Конвертация валют">
+                <StackPanel Margin="10">
+                    <Button Content="Конвертировать валюту" Click="ConvertCurrency_Click"/>
+                    <Label Content="Из кошелька:"/>
+                    <ComboBox x:Name="FromWalletComboBox" Width="150" Margin="5"/>
+                    <Label Content="В валюту:"/>
+                    <ComboBox x:Name="ToCurrencyComboBox" Width="150">
+                        <ComboBoxItem Content="USD" />
+                        <ComboBoxItem Content="EUR" />
+                        <ComboBoxItem Content="UAH" />
+                    </ComboBox>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="Переводы средств">
+                <StackPanel Margin="10">
+                    <Button Content="Подтвердить перевод" Click="ConfirmTransfer_Click"/>
+                    <Label Content="Из кошелька:"/>
+                    <ComboBox x:Name="FromWallet" Width="150" Margin="5"/>
+                    <Label Content="В кошелёк:"/>
+                    <ComboBox x:Name="ToWallet" Width="150" Margin="5"/>
+                    <TextBox x:Name="AmountTextBoxWallet" Width="150" Text="Введите сумму"/>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
+
+
